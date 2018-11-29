@@ -12,13 +12,15 @@ package com.mycompany.dbpedidos.service;
 public class Prodpedido {
     private int PLU;
     private int cantidadProducto;
+    private int codPedido;
     
     public Prodpedido(){}
     
     //constructor
-    public Prodpedido(int PLU, int cantidadProducto) {
+    public Prodpedido(int PLU, int cantidadProducto, int codPedido) {
         this.PLU = PLU;
         this.cantidadProducto = cantidadProducto;
+        this.codPedido = codPedido;
     }
     
     //get & setter
@@ -37,12 +39,20 @@ public class Prodpedido {
     public void setCantidadProducto(int cantidadProducto) {
         this.cantidadProducto = cantidadProducto;
     }
-    
-    //toString
-    @Override
-    public String toString() {
-        return "prodpedido{" + "PLU=" + PLU + ", cantidadProducto=" + cantidadProducto + '}';
+
+    public int getCodPedido() {
+        return codPedido;
+    }
+
+    public void setCodPedido(int codPedido) {
+        this.codPedido = codPedido;
     }
     
-    
+        
+    //toString
+
+    @Override
+    public String toString() {
+        return "Prodpedido{" + "PLU=" + PLU + ", cantidadProducto=" + cantidadProducto + ", codPedido=" + codPedido + '}';
+    } 
 }

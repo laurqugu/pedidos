@@ -10,6 +10,8 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -32,13 +34,18 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Pedidos.findByCodpedido", query = "SELECT p FROM Pedidos p WHERE p.codpedido = :codpedido")
     , @NamedQuery(name = "Pedidos.findByFecha", query = "SELECT p FROM Pedidos p WHERE p.fecha = :fecha")
     , @NamedQuery(name = "Pedidos.findByCodusuario", query = "SELECT p FROM Pedidos p WHERE p.codusuario = :codusuario")
+    , @NamedQuery(name = "Pedidos.findByCodproveedor", query = "SELECT p FROM Pedidos p WHERE p.codproveedor = :codproveedor")
+    , @NamedQuery(name = "Pedidos.findByCodpuntodeentraga", query = "SELECT p FROM Pedidos p WHERE p.codpuntodeentraga = :codpuntodeentraga")
+    , @NamedQuery(name = "Pedidos.findByCodestadobodega", query = "SELECT p FROM Pedidos p WHERE p.codestadobodega = :codestadobodega")
+    , @NamedQuery(name = "Pedidos.findByCodestadopedido", query = "SELECT p FROM Pedidos p WHERE p.codestadopedido = :codestadopedido")
+    , @NamedQuery(name = "Pedidos.findByCodestadoproveedor", query = "SELECT p FROM Pedidos p WHERE p.codestadoproveedor = :codestadoproveedor")
     , @NamedQuery(name = "Pedidos.findByTipodepedido", query = "SELECT p FROM Pedidos p WHERE p.tipodepedido = :tipodepedido")})
 public class Pedidos implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "CODPEDIDO")
     private Integer codpedido;
     @Basic(optional = false)
@@ -56,6 +63,26 @@ public class Pedidos implements Serializable {
     @Size(min = 1, max = 30)
     @Column(name = "TIPODEPEDIDO")
     private String tipodepedido;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "CODPROVEEDOR")
+    private int codproveedor;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "CODESTADOBODEGA")
+    private int codestadobodega;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "CODESTADOPROVEEDOR")
+    private int codestadoproveedor;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "CODESTADODEPEDIDO")
+    private int codestadopedido;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "CODPUNTODEENTRAGA")
+    private int codpuntodeentraga;
 
     public Pedidos() {
     }
@@ -64,12 +91,18 @@ public class Pedidos implements Serializable {
         this.codpedido = codpedido;
     }
 
-    public Pedidos(Integer codpedido, Date fecha, String codusuario, String tipodepedido) {
+    public Pedidos(Integer codpedido, Date fecha, String codusuario, String tipodepedido, int codproveedor, int codestadobodega, int codestadoproveedor, int codestadopedido, int codpuntodeentraga) {
         this.codpedido = codpedido;
         this.fecha = fecha;
         this.codusuario = codusuario;
         this.tipodepedido = tipodepedido;
-    }
+        this.codproveedor = codproveedor;
+        this.codestadobodega = codestadobodega;
+        this.codestadoproveedor = codestadoproveedor;
+        this.codestadopedido = codestadopedido;
+        this.codpuntodeentraga = codpuntodeentraga;
+    }  
+    
 
     public Integer getCodpedido() {
         return codpedido;
@@ -95,6 +128,47 @@ public class Pedidos implements Serializable {
         this.codusuario = codusuario;
     }
 
+    public int getCodproveedor() {
+        return codproveedor;
+    }
+
+    public void setCodproveedor(int codproveedor) {
+        this.codproveedor = codproveedor;
+    }
+
+    public int getCodpuntodeentraga() {
+        return codpuntodeentraga;
+    }
+
+    public void setCodpuntodeentraga(int codpuntodeentraga) {
+        this.codpuntodeentraga = codpuntodeentraga;
+    }
+
+    public int getCodestadobodega() {
+        return codestadobodega;
+    }
+
+    public void setCodestadobodega(int codestadobodega) {
+        this.codestadobodega = codestadobodega;
+    }
+
+    public int getCodestadoproveedor() {
+        return codestadoproveedor;
+    }
+
+    public void setCodestadoproveedor(int codestadoproveedor) {
+        this.codestadoproveedor = codestadoproveedor;
+    }
+
+    public int getCodestadopedido() {
+        return codestadopedido;
+    }
+
+    public void setCodestadopedido(int codestadopedido) {
+        this.codestadopedido = codestadopedido;
+    }
+    
+    
     public String getTipodepedido() {
         return tipodepedido;
     }

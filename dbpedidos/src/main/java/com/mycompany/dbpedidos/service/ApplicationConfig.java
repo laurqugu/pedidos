@@ -31,6 +31,7 @@ public class ApplicationConfig extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(com.mycompany.dbpedidos.service.service.PedidosFacadeREST.class);
         resources.add(com.mycompany.dbpedidos.service.service.ProductopedidoFacadeREST.class);
+        resources.add(com.mycompany.dbpedidos.service.service.ProductosFacadeREST.class);
     }
     
 }

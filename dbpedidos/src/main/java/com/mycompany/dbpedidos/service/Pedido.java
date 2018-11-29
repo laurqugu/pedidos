@@ -15,9 +15,10 @@ import java.util.List;
 public class Pedido {
     
     //Definición de variables
-    private Date fechaHoraPedido;
+    private Date fecha;
     private String tipoPedido;
     private int codPuntoEntrega;
+    private int codProveedor;
     private String codUsuario;
     private int estadoBodega;
     private int estadoProveedor;
@@ -26,23 +27,26 @@ public class Pedido {
 
     public Pedido() {}
 
-    public Pedido(Date fechaHoraPedido, String tipoPedido, int codPuntoEntrega, String codUsuario, int estadoBodega, int estadoProveedor, int estadoPedido, List<Prodpedido> productos) {
-        this.fechaHoraPedido = fechaHoraPedido;
+    public Pedido(Date fecha, String tipoPedido, int codPuntoEntrega, int codProveedor, String codUsuario, int estadoBodega, int estadoProveedor, int estadoPedido, List<Prodpedido> productos) {
+        this.fecha = fecha;
         this.tipoPedido = tipoPedido;
         this.codPuntoEntrega = codPuntoEntrega;
+        this.codProveedor = codProveedor;
         this.codUsuario = codUsuario;
         this.estadoBodega = estadoBodega;
         this.estadoProveedor = estadoProveedor;
         this.estadoPedido = estadoPedido;
         this.productos = productos;
     }
+    
+    
 
-    public Date getFechaHoraPedido() {
-        return fechaHoraPedido;
+    public Date getFecha() {
+        return fecha;
     }
 
-    public void setFechaHoraPedido(Date fechaHoraPedido) {
-        this.fechaHoraPedido = fechaHoraPedido;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
     public String getTipoPedido() {
@@ -60,6 +64,14 @@ public class Pedido {
     public void setCodPuntoEntrega(int codPuntoEntrega) {
         this.codPuntoEntrega = codPuntoEntrega;
     }
+
+    public int getCodProveedor() {
+        return codProveedor;
+    }
+
+    public void setCodProveedor(int codProveedor) {
+        this.codProveedor = codProveedor;
+    }    
 
     public String getCodUsuario() {
         return codUsuario;
@@ -103,10 +115,8 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return "pedido{" + "fechaHoraPedido=" + fechaHoraPedido + ", tipoPedido=" + tipoPedido + ", codPuntoEntrega=" + codPuntoEntrega + ", codUsuario=" + codUsuario + ", estadoBodega=" + estadoBodega + ", estadoProveedor=" + estadoProveedor + ", estadoPedido=" + estadoPedido + ", productos=" + productos + '}';
+        return "Pedido{" + "fecha=" + fecha + ", tipoPedido=" + tipoPedido + ", codPuntoEntrega=" + codPuntoEntrega + ", codProveedor=" + codProveedor + ", codUsuario=" + codUsuario + ", estadoBodega=" + estadoBodega + ", estadoProveedor=" + estadoProveedor + ", estadoPedido=" + estadoPedido + ", productos=" + productos + '}';
     }
-    
-    
     
     
 }

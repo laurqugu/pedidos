@@ -28,6 +28,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Productopedido.findAll", query = "SELECT p FROM Productopedido p")
     , @NamedQuery(name = "Productopedido.findById", query = "SELECT p FROM Productopedido p WHERE p.id = :id")
+    , @NamedQuery(name = "Productopedido.findByCodpedido", query = "SELECT p FROM Productopedido p WHERE p.codpedido = :codpedido")
+    , @NamedQuery(name = "Productopedido.findByCodproducto", query = "SELECT p FROM Productopedido p WHERE p.codproducto = :codproducto")
     , @NamedQuery(name = "Productopedido.findByCantidadproducto", query = "SELECT p FROM Productopedido p WHERE p.cantidadproducto = :cantidadproducto")
     , @NamedQuery(name = "Productopedido.findByCantidadconfirmada", query = "SELECT p FROM Productopedido p WHERE p.cantidadconfirmada = :cantidadconfirmada")})
 public class Productopedido implements Serializable {
@@ -42,6 +44,18 @@ public class Productopedido implements Serializable {
     @NotNull
     @Column(name = "CANTIDADPRODUCTO")
     private int cantidadproducto;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "CODPEDIDO")
+    private int codpedido;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "CODPRODUCTO")
+    private int codproducto;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "CODPROVEEDOR")
+    private int codproveedor;
     @Column(name = "CANTIDADCONFIRMADA")
     private Integer cantidadconfirmada;
 
@@ -52,10 +66,31 @@ public class Productopedido implements Serializable {
         this.id = id;
     }
 
-    public Productopedido(Integer id, int cantidadproducto) {
+    public Productopedido(Integer id, int cantidadproducto, int codproducto, int codpedido, int codproveedor) {
         this.id = id;
         this.cantidadproducto = cantidadproducto;
+        this.codproducto = codproducto;
+        this.codpedido = codpedido;
+        this.codproveedor = codproveedor;
     }
+
+    public int getCodproveedor() {
+        return codproveedor;
+    }
+
+    public void setCodproveedor(int codproveedor) {
+        this.codproveedor = codproveedor;
+    }
+
+    public int getCodpedido() {
+        return codpedido;
+    }
+
+    public void setCodpedido(int codpedido) {
+        this.codpedido = codpedido;
+    }
+    
+    
 
     public Integer getId() {
         return id;
@@ -72,6 +107,19 @@ public class Productopedido implements Serializable {
     public void setCantidadproducto(int cantidadproducto) {
         this.cantidadproducto = cantidadproducto;
     }
+
+    public Productopedido(int codpedido) {
+        this.codpedido = codpedido;
+    }
+    
+    public int getCodproducto() {
+        return codproducto;
+    }
+
+    public void setCodproducto(int codproducto) {
+        this.codproducto = codproducto;
+    }
+    
 
     public Integer getCantidadconfirmada() {
         return cantidadconfirmada;
